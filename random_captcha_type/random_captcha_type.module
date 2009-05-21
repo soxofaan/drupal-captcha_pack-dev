@@ -1,5 +1,5 @@
 <?php
-// $Id: random_captcha_type.module,v 1.13 2009/04/13 13:24:27 soxofaan Exp $
+// $Id: random_captcha_type.module,v 1.14 2009/05/21 18:51:00 soxofaan Exp $
 
 /**
  * Implementation of a "meta CAPTCHA" which randomly picks a CAPTCHA type
@@ -35,7 +35,7 @@ function random_captcha_type_menu() {
 /**
  * Implementation of hook_captcha
  */
-function random_captcha_type_captcha($op, $captcha_type='', $arg3='') {
+function random_captcha_type_captcha($op, $captcha_type='') {
   switch ($op) {
     case 'list':
       require_once('random_captcha_type.inc');
@@ -59,7 +59,7 @@ function random_captcha_type_captcha($op, $captcha_type='', $arg3='') {
         }
         list($module, $type) = explode('/', $module_and_type);
         // Call the generate CAPTCHA hook
-        $captcha = module_invoke($module, 'captcha', 'generate', $type, $arg3);
+        $captcha = module_invoke($module, 'captcha', 'generate', $type);
         // Store the current CAPTCHA type so it can be recovered for
         // regenerating the form in the validation phase
         $captcha['form']['random_captcha_type'] = array(
@@ -68,17 +68,5 @@ function random_captcha_type_captcha($op, $captcha_type='', $arg3='') {
         );
         return $captcha;
       }
-    case 'preprocess':
-      if ($captcha_type == 'Random CAPTCHA type') {
-        // Get the module and type from $_POST.
-        // Yes this is very ugly: TODO: the preprocess op should be killed, there are better ways to solve this
-        if (isset($_POST['random_captcha_type'])) {
-          $module_and_type = $_POST['random_captcha_type'];
-          list($module, $type) = explode('/', $module_and_type);
-          // Call the preprocess CAPTCHA hook
-          return module_invoke($module, 'captcha', 'preprocess', $type, $arg3);
-        }
-      }
-      break;
   }
 }
