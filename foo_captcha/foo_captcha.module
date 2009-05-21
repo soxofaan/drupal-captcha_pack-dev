@@ -1,5 +1,5 @@
 <?php
-// $Id: foo_captcha.module,v 1.8 2008/04/07 22:55:02 soxofaan Exp $
+// $Id: foo_captcha.module,v 1.9 2009/05/21 17:51:10 soxofaan Exp $
 
 /**
  * Implementation of hook_help().
@@ -55,18 +55,20 @@ function foo_captcha_captcha($op, $captcha_type='', $response='') {
           '#type' => 'textfield',
           '#title' => t('Enter "foo"'),
           '#required' => TRUE,
+          '#process' => array('foo_captcha_process'),
         );
-        $captcha['preprocess'] = TRUE;
         return $captcha;
       }
       break;
-    case 'preprocess':
-      if ($captcha_type == 'Foo CAPTCHA') {
-        if (variable_get('foo_captcha_case_insensitive', TRUE)) {
-          $response = strtolower($response);
-        }
-        return $response;
-      }
-      break;
   }
+}
+
+/**
+ * Process the response to the foo CAPTCHA before validation.
+ */
+function foo_captcha_process($element, $edit, &$form_state, $complete_form) {
+  if (variable_get('foo_captcha_case_insensitive', TRUE)) {
+    $element['#value'] = strtolower($element['#value']);
+  }
+  return $element;
 }
