@@ -97,7 +97,7 @@ function lost_character_captcha_captcha($op, $captcha_type='') {
 /**
  * Process the response before validation.
  */
-function lost_character_process($element, $edit, &$form_state, $complete_form){
+function lost_character_process($element, $edit, &$form_state, $complete_form) {
   $response = $element['#value'];
   // remove white spaces
   $parts = _text_captcha_whitespace_explode($response);
