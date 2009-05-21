@@ -1,0 +1,6 @@
+; $Id: random_captcha_type.info,v 1.4 2008/02/13 22:11:40 soxofaan Exp $
+name = "Random CAPTCHA type"
+description = "Provides a 'meta' CAPTCHA that randomly picks a CAPTCHA type."
+package = "Spam control"
+dependencies[] = captcha
+core = 6.x

@@ -1,0 +1,6 @@
+; $Id: lost_character_captcha.info,v 1.4 2007/12/22 15:55:12 soxofaan Exp $
+name = "Lost character CAPTCHA"
+description = "Provides CAPTCHA that asks for the lost character(s) in a given word."
+package = "Spam control"
+dependencies[] = captcha
+core = 6.x

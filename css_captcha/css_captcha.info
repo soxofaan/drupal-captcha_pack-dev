@@ -1,0 +1,6 @@
+; $Id: css_captcha.info,v 1.5 2007/12/22 14:10:43 soxofaan Exp $
+name = "CSS CAPTCHA"
+description = "Provides a CSS based CAPTCHA type."
+package = "Spam control"
+dependencies[] = captcha
+core = 6.x

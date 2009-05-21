@@ -1,0 +1,6 @@
+; $Id: word_list_captcha.info,v 1.4 2008/02/13 21:13:00 soxofaan Exp $
+name = "Word list CAPTCHA"
+description = "Provides CAPTCHA like 'which word does not belong in the list [green red bird blue]?'."
+package = "Spam control"
+dependencies[] = captcha
+core = 6.x

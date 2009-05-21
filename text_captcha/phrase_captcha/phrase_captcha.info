@@ -1,0 +1,6 @@
+; $Id: phrase_captcha.info,v 1.4 2008/02/13 21:39:52 soxofaan Exp $
+name = "Phrase CAPTCHA"
+description = "Provides CAPTCHA that requires to pick for the right word/character out of a CAPTCHA phrase."
+package = "Spam control"
+dependencies[] = captcha
+core = 6.x

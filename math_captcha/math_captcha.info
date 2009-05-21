@@ -1,0 +1,6 @@
+; $Id: math_captcha.info,v 1.4 2007/12/22 15:13:09 soxofaan Exp $
+name = "Math CAPTCHA"
+description = "Provide math CAPTCHAs like 'two + three = ?' and '2 times ? = 6'"
+package = "Spam control"
+dependencies[] = captcha
+core = 6.x

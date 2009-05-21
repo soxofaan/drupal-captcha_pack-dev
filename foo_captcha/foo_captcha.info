@@ -1,0 +1,6 @@
+; $Id: foo_captcha.info,v 1.4 2008/02/13 22:01:24 soxofaan Exp $
+name = "Foo CAPTCHA"
+description = "The foo CAPTCHA requires the user to enter the word 'foo'."
+package = "Spam control"
+dependencies[] = captcha
+core = 6.x
