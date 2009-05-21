@@ -1,5 +1,5 @@
 <?php
-// $Id: lost_character_captcha.module,v 1.6 2008/04/07 22:55:03 soxofaan Exp $
+// $Id: lost_character_captcha.module,v 1.7 2009/05/21 17:34:52 soxofaan Exp $
 
 require_once(drupal_get_path('module', 'lost_character_captcha') .'/../text_captcha.inc');
 
@@ -86,22 +86,27 @@ function lost_character_captcha_captcha($op, $captcha_type='', $response='') {
           '#size' => 3,
           '#maxlength' => 3,
           '#required' => TRUE,
+          '#process' => array('lost_character_process'),
         );
-        $captcha['preprocess'] = TRUE;
         return $captcha;
       }
     break;
-  case 'preprocess':
-    if ($captcha_type == "Lost characters") {
-      // remove white spaces
-      $parts = _text_captcha_whitespace_explode($response);
-      $response = implode('', $parts);
-      // split in utf8 characters, sort and rejoin
-      $characters = _text_captcha_utf8_split($response);
-      sort($characters);
-      $response = implode('', $characters);
-      return $response;
-    }
-    break;
   }
+}
+
+/**
+ * Process the response before validation.
+ */
+function lost_character_process($element, $edit, &$form_state, $complete_form){
+  $response = $element['#value'];
+  // remove white spaces
+  $parts = _text_captcha_whitespace_explode($response);
+  $response = implode('', $parts);
+  // split in utf8 characters, sort and rejoin
+  $characters = _text_captcha_utf8_split($response);
+  sort($characters);
+  $response = implode('', $characters);
+  // Put back in element and return.
+  $element['#value'] = $response;
+  return $element;
 }
