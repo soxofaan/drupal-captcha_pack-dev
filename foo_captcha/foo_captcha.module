@@ -1,5 +1,5 @@
 <?php
-// $Id: foo_captcha.module,v 1.10 2009/05/21 17:53:23 soxofaan Exp $
+// $Id: foo_captcha.module,v 1.11 2009/05/21 18:00:44 soxofaan Exp $
 
 /**
  * Implementation of hook_help().
@@ -31,10 +31,10 @@ function foo_captcha_menu() {
  */
 function foo_captcha_settings_form() {
   $form = array();
-  $form['foo_captcha_case_insensitive'] = array(
+  $form['foo_captcha_ignore_spaces'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Case insensitive validation'),
-    '#default_value' => variable_get('foo_captcha_case_insensitive', TRUE),
+    '#title' => t('Ignore spaces in the response'),
+    '#default_value' => variable_get('foo_captcha_ignore_spaces', FALSE),
   );
   return system_settings_form($form);
 }
@@ -67,8 +67,8 @@ function foo_captcha_captcha($op, $captcha_type='') {
  * Process the response to the foo CAPTCHA before validation.
  */
 function foo_captcha_process($element, $edit, &$form_state, $complete_form) {
-  if (variable_get('foo_captcha_case_insensitive', TRUE)) {
-    $element['#value'] = strtolower($element['#value']);
+  if (variable_get('foo_captcha_ignore_spaces', FALSE)) {
+    $element['#value'] = preg_replace('/\s*/', '', $element['#value']);
   }
   return $element;
 }
