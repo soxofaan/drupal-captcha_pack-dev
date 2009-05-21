@@ -1,5 +1,5 @@
 <?php
-// $Id: ascii_art_captcha.module,v 1.6 2008/04/07 22:55:01 soxofaan Exp $
+// $Id: ascii_art_captcha.module,v 1.7 2009/05/21 17:32:28 soxofaan Exp $
 
 /**
  * Implementation of hook_help().

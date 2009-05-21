@@ -1,5 +1,5 @@
 <?php
-// $Id: css_captcha.module,v 1.10 2008/04/07 22:55:01 soxofaan Exp $
+// $Id: css_captcha.module,v 1.11 2009/05/21 17:32:28 soxofaan Exp $
 
 define('CSS_CAPTCHA_DEFAULT_ALLOWED_CHARACTERS', 'aAbBcCdDeEfFgGhHijkKLmMnNpPqQrRsStTuUvVwWxXyYzZ123456789');
 
