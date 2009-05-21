@@ -1,5 +1,5 @@
 <?php
-// $Id: foo_captcha.module,v 1.9 2009/05/21 17:51:10 soxofaan Exp $
+// $Id: foo_captcha.module,v 1.10 2009/05/21 17:53:23 soxofaan Exp $
 
 /**
  * Implementation of hook_help().
@@ -42,7 +42,7 @@ function foo_captcha_settings_form() {
 /**
  * Implementation of hook_captcha().
  */
-function foo_captcha_captcha($op, $captcha_type='', $response='') {
+function foo_captcha_captcha($op, $captcha_type='') {
   switch ($op) {
     case 'list':
       return array('Foo CAPTCHA');

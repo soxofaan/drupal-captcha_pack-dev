@@ -1,5 +1,5 @@
 <?php
-// $Id: lost_character_captcha.module,v 1.7 2009/05/21 17:34:52 soxofaan Exp $
+// $Id: lost_character_captcha.module,v 1.8 2009/05/21 17:53:23 soxofaan Exp $
 
 require_once(drupal_get_path('module', 'lost_character_captcha') .'/../text_captcha.inc');
 
@@ -35,7 +35,7 @@ function lost_character_captcha_menu() {
 /**
  * Implementation of hook_captcha().
  */
-function lost_character_captcha_captcha($op, $captcha_type='', $response='') {
+function lost_character_captcha_captcha($op, $captcha_type='') {
   switch ($op) {
     case 'list':
       return array("Lost characters");
