@@ -91,7 +91,6 @@ function css_captcha_captcha($op, $captcha_type='', $response='') {
           '#required' => TRUE,
           '#description' => t('Enter the code without spaces and pay attention to upper/lower case.')
         );
-        $captcha['preprocess'] = FALSE;
         return $captcha;
       }
     break;
