@@ -1,5 +1,5 @@
 <?php
-// $Id: math_captcha.challenge.inc,v 1.3 2009/06/26 19:48:53 soxofaan Exp $
+// $Id: math_captcha.challenge.inc,v 1.4 2009/07/24 16:14:48 soxofaan Exp $
 
 /**
  * function for addition challenges
@@ -15,7 +15,8 @@ function _math_captcha_addition_challenge() {
     $y = mt_rand(0, $argmax);
   }
   $solution = $x + $y;
-  return _math_captcha_build_captcha($x, $y, '+', $solution);
+  $maxlength = strlen(strval($argmax + $argmax)) + intval(variable_get('math_captcha_addition_allow_negative', FALSE));
+  return _math_captcha_build_captcha($x, $y, '+', $solution, $maxlength);
 }
 
 /**
@@ -32,7 +33,8 @@ function _math_captcha_subtraction_challenge() {
     $x = mt_rand($y, $argmax);
   }
   $solution = $x - $y;
-  return _math_captcha_build_captcha($x, $y, '-', $solution);
+  $maxlength = strlen(strval($argmax + $argmax)) + intval(variable_get('math_captcha_subtraction_allow_negative', FALSE));
+  return _math_captcha_build_captcha($x, $y, '-', $solution, $maxlength);
 }
 
 /**
@@ -47,20 +49,21 @@ function _math_captcha_multiplication_challenge() {
     $y = $y * (mt_rand(0, 1) * 2 - 1);
   }
   $solution = $x * $y;
-  return _math_captcha_build_captcha($x, $y, '*', $solution);
+  $maxlength = strlen(strval($argmax * $argmax)) + intval(variable_get('math_captcha_multiplication_allow_negative', FALSE));
+  return _math_captcha_build_captcha($x, $y, '*', $solution, $maxlength);
 }
 
 /**
  * helper function to build a math CAPTCHA form item
  */
-function _math_captcha_build_captcha($x, $y, $operator, $result) {
+function _math_captcha_build_captcha($x, $y, $operator, $result, $maxlength=3) {
   $form_item = array();
   $form_item['form']['captcha_response'] = array(
     '#type' => 'textfield',
     '#title' => t('Math question'),
     '#required' => TRUE,
-    '#size' => 3,
-    '#maxlength' => max(strlen("$result"), strlen("$x"), strlen("$y")),
+    '#size' => $maxlength + 2,
+    '#maxlength' => $maxlength,
     '#description' => t('Solve this math question and enter the solution with digits. E.g. for "two plus four = ?" enter "6".'),
   );
   switch (mt_rand(0, 2)) {
