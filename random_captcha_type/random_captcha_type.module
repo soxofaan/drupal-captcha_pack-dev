@@ -1,5 +1,5 @@
 <?php
-// $Id: random_captcha_type.module,v 1.14 2009/05/21 18:51:00 soxofaan Exp $
+// $Id: random_captcha_type.module,v 1.15 2009/08/18 23:26:30 soxofaan Exp $
 
 /**
  * Implementation of a "meta CAPTCHA" which randomly picks a CAPTCHA type
@@ -35,7 +35,7 @@ function random_captcha_type_menu() {
 /**
  * Implementation of hook_captcha
  */
-function random_captcha_type_captcha($op, $captcha_type='') {
+function random_captcha_type_captcha($op, $captcha_type='', $captcha_sid='') {
   switch ($op) {
     case 'list':
       require_once('random_captcha_type.inc');
@@ -44,6 +44,7 @@ function random_captcha_type_captcha($op, $captcha_type='') {
         return;
       }
       return array('Random CAPTCHA type');
+
     case 'generate':
       if ($captcha_type == 'Random CAPTCHA type') {
         require_once('random_captcha_type.inc');
@@ -59,7 +60,7 @@ function random_captcha_type_captcha($op, $captcha_type='') {
         }
         list($module, $type) = explode('/', $module_and_type);
         // Call the generate CAPTCHA hook
-        $captcha = module_invoke($module, 'captcha', 'generate', $type);
+        $captcha = module_invoke($module, 'captcha', 'generate', $type, $captcha_sid);
         // Store the current CAPTCHA type so it can be recovered for
         // regenerating the form in the validation phase
         $captcha['form']['random_captcha_type'] = array(
