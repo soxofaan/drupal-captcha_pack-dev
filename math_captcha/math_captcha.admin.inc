@@ -1,5 +1,5 @@
 <?php
-// $Id: math_captcha.admin.inc,v 1.1 2007/12/22 15:13:09 soxofaan Exp $
+// $Id: math_captcha.admin.inc,v 1.2 2010/01/24 20:38:47 soxofaan Exp $
 
 /**
  * Math CAPTCHA settings form
@@ -20,13 +20,13 @@ function math_captcha_settings_form() {
   );
   $form['math_captcha_textual_numbers'] = array(
     '#type' => 'checkbox',
-    '#title' => 'Textual representation of numbers',
+    '#title' => t('Textual representation of numbers'),
     '#default_value' => variable_get('math_captcha_textual_numbers', TRUE),
     '#description' => t('When enabled, the numbers in the challenge will get a textual representation if available. E.g. "four" instead of "4".'),
   );
   $form['math_captcha_textual_operators'] = array(
     '#type' => 'checkbox',
-    '#title' => 'Textual representation of operators',
+    '#title' => t('Textual representation of operators'),
     '#default_value' => variable_get('math_captcha_textual_operators', FALSE),
     '#description' => t('When enabled, the operators in the challenge will get a textual representation if available. E.g. "plus" instead of "+".'),
   );
