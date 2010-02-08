@@ -1,4 +1,4 @@
-# $Id$
+# $Id: nl.po,v 1.1 2010/02/08 20:38:02 soxofaan Exp $
 #
 # Dutch translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
@@ -118,7 +118,7 @@ msgstr ""
 #: text_captcha/phrase_captcha/phrase_captcha.info:0
 #: text_captcha/word_list_captcha/word_list_captcha.info:0
 msgid "Spam control"
-msgstr "Spamcontrole"
+msgstr "Spam-beperking"
 
 #: css_captcha/css_captcha.admin.inc:11
 msgid "Characters to use in the code"
@@ -220,7 +220,7 @@ msgstr "Aftrekvraag: x - y = z"
 
 #: math_captcha/math_captcha.admin.inc:70
 msgid "Multiplication challenge: x * y = z"
-msgstr "Vermenigvuldigsvraag: x * y = z"
+msgstr "Vermenigvuldigingsvraag: x * y = z"
 
 #: math_captcha/math_captcha.admin.inc:95
 msgid "You should select at least one type of math challenges."
